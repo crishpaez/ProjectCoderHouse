@@ -400,13 +400,18 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.12689751, y: 0.3244915, z: -0.043983065, w: -0.93630546}
-  m_LocalPosition: {x: -3.5508804, y: 23.136774, z: -25.991684}
+  m_LocalRotation: {x: -0.17449659, y: -0.8010272, z: 0.27975234, w: -0.4996449}
+  m_LocalPosition: {x: -51.866177, y: 70.70869, z: 52.860474}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1105151563 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6344719950981099438, guid: 5d89fd873f7e9ac46b7a5131308e4695, type: 3}
+  m_PrefabInstance: {fileID: 1259034507}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1259034507
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -415,12 +420,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -2708385369476812257, guid: 5d89fd873f7e9ac46b7a5131308e4695, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 2818423840006971860, guid: 30181797a4b3a654da410ff0720fb451, type: 3}
+    - target: {fileID: -2708385369476812257, guid: 5d89fd873f7e9ac46b7a5131308e4695, type: 3}
       propertyPath: bulletSpawnPoint
       value: 
-      objectReference: {fileID: 1790197944}
+      objectReference: {fileID: 1105151563}
+    - target: {fileID: -2708385369476812257, guid: 5d89fd873f7e9ac46b7a5131308e4695, type: 3}
+      propertyPath: ftIntervalTimeSpawnBullet
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6344719949645280567, guid: 5d89fd873f7e9ac46b7a5131308e4695, type: 3}
       propertyPath: m_Name
-      value: SpawnPoint
+      value: SupportRight
+      objectReference: {fileID: 0}
+    - target: {fileID: 6344719949935191264, guid: 5d89fd873f7e9ac46b7a5131308e4695, type: 3}
+      propertyPath: m_Name
+      value: SupportLeft
       objectReference: {fileID: 0}
     - target: {fileID: 6344719950387991845, guid: 5d89fd873f7e9ac46b7a5131308e4695, type: 3}
       propertyPath: m_Name
@@ -482,6 +499,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6344719950432679328, guid: 5d89fd873f7e9ac46b7a5131308e4695, type: 3}
+      propertyPath: m_Name
+      value: CylinderBase
+      objectReference: {fileID: 0}
     - target: {fileID: 6344719950936734149, guid: 5d89fd873f7e9ac46b7a5131308e4695, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.31
@@ -514,6 +535,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -30.307
       objectReference: {fileID: 0}
+    - target: {fileID: 6344719950981099438, guid: 5d89fd873f7e9ac46b7a5131308e4695, type: 3}
+      propertyPath: m_Name
+      value: SpawnPoint
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d89fd873f7e9ac46b7a5131308e4695, type: 3}
 --- !u!1 &1547153121 stripped
@@ -535,10 +560,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1790197944}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5fe7c46e6343954e8c9f9f41b837e87, type: 3}
+  m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpawnPoint: {fileID: 0}
 --- !u!114 &1790197950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -553,6 +577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 0}
   bulletSpawnPoint: {fileID: 0}
+  ftIntervalTimeSpawnBullet: 1
 --- !u!1 &1848556655
 GameObject:
   m_ObjectHideFlags: 0
