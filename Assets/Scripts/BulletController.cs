@@ -20,7 +20,21 @@ public class BulletController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        destroyBullet();
+
+
+        ChangeScaleWithSpace();
+    }
+    private void ChangeScaleWithSpace() // Change scale with space
+    {
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            transform.localScale *= 2;
+        }
+    }
+
+    private void destroyBullet()
+    {
         ftDestroyBulletByTime -= Time.deltaTime;
         if (ftDestroyBulletByTime > 0)
         {
@@ -30,22 +44,9 @@ public class BulletController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
-                
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            ChangeScaleWithSpace();
-        }
     }
-    private void ChangeScaleWithSpace() // Change scale with space
-    {
-        transform.localScale *= 2;
-    }
-
     private void MoveBullet()
     {
         transform.position += direction * ftSpeedBullet * Time.deltaTime;
-        //transform.position += new Vector3(ftSpeedBullet, 0, 0) * Time.deltaTime;
-        //transform.Translate(ftSpeedBullet * Time.deltaTime * direction);
     }
 }

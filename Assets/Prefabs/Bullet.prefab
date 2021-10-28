@@ -111,4 +111,4 @@ MonoBehaviour:
   ftSpeedBullet: 30
   direction: {x: 1, y: 0, z: 0}
   intDemage: 3
-  ftDestroyTimeBullet: 2
+  ftDestroyBulletByTime: 4

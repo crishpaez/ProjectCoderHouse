@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     public float ftPlayerSpeed;
 
     public Vector3 newScale;
-    public Vector3 direction;
     public Vector3 initPosition = new Vector3(4, 4, 4);
 
     public GameObject swordPlayer;
@@ -19,26 +18,40 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         transform.position = initPosition;
-        transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-
+        
         Debug.Log(swordPlayer.GetComponent<SwordController>().GetSwordName());
         swordPlayer.GetComponent<SwordController>().SetSwordName("Claymore");
         Debug.Log(swordPlayer.GetComponent<SwordController>().GetSwordName());
-        Thread.Sleep(3000);
-        ChangeScale();
-
-        //ConditionLifePlayer();
+                
         DemageReceivedPlayer();
     }
 
     // Update is called once per frame
     void Update()
     {
-        ChangePosition();
+        movePlayer();
     }
 
     // Methods
-    
+    void movePlayer()
+    {
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.position += transform.TransformDirection(Vector3.forward) * ftPlayerSpeed * Time.deltaTime;            
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.position += transform.TransformDirection(Vector3.back) * ftPlayerSpeed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.position += transform.TransformDirection(Vector3.left) * ftPlayerSpeed * Time.deltaTime;            
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.position += transform.TransformDirection(Vector3.right) * ftPlayerSpeed * Time.deltaTime;            
+        }
+    }
     void DemageReceivedPlayer()
     {
         if (intPlayerLife > 5 && intPlayerLife < 8)
@@ -52,42 +65,9 @@ public class PlayerController : MonoBehaviour
             intPlayerLife -= 5;
         }
     }
-
-    //void ConditionLifePlayer()
-    //{
-    //    if (intPlayerLife > 1)
-    //    {
-    //        Debug.Log($"You're alive {intPlayerLife}");
-    //    }
-    //    else if (intPlayerLife == 1)
-    //    {
-    //        Debug.Log($"You're in danger {intPlayerLife}");
-    //        intPlayerLife++;
-    //    }
-    //    else if (intPlayerLife == 0)
-    //    {
-    //        Debug.Log("Game over");
-    //        Debug.Break();
-    //    }
-    //}
-
-
-    //void DemageReceivedPlayerForTime(int intTime)
-    //{
-    //    while (intPlayerLife > 10)
-    //    {
-    //        intPlayerLife--;
-    //        Thread.Sleep(intTime);
-    //    }
-    //}
-
+       
     void ChangeScale() // cambiar escala
     {
         transform.localScale = newScale;
-    }
-
-    void ChangePosition() // desplazamiento
-    {
-        transform.position += direction * ftPlayerSpeed * Time.deltaTime;
-    }
+    }    
 }
