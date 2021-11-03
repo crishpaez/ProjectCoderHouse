@@ -13,16 +13,17 @@ public class PlayerController : MonoBehaviour
     public Vector3 initPosition = new Vector3(4, 4, 4);
 
     public GameObject swordPlayer;
-
+    float ftCameraAxisByX;
+    float ftCameraAxisByY = 5f;
     // Start is called before the first frame update
     void Start()
     {
         transform.position = initPosition;
-        
+
         Debug.Log(swordPlayer.GetComponent<SwordController>().GetSwordName());
         swordPlayer.GetComponent<SwordController>().SetSwordName("Claymore");
         Debug.Log(swordPlayer.GetComponent<SwordController>().GetSwordName());
-                
+
         DemageReceivedPlayer();
     }
 
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         movePlayer();
+        rotatePlayer();
     }
 
     // Methods
@@ -37,7 +39,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            transform.position += transform.TransformDirection(Vector3.forward) * ftPlayerSpeed * Time.deltaTime;            
+            transform.position += transform.TransformDirection(Vector3.forward) * ftPlayerSpeed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.S))
         {
@@ -45,12 +47,19 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.A))
         {
-            transform.position += transform.TransformDirection(Vector3.left) * ftPlayerSpeed * Time.deltaTime;            
+            transform.position += transform.TransformDirection(Vector3.left) * ftPlayerSpeed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.position += transform.TransformDirection(Vector3.right) * ftPlayerSpeed * Time.deltaTime;            
+            transform.position += transform.TransformDirection(Vector3.right) * ftPlayerSpeed * Time.deltaTime;
         }
+    }
+    private void rotatePlayer()
+    {
+        ftCameraAxisByX += Input.GetAxis("Mouse X");
+        //ftCameraAxisByY += Input.GetAxis("Mouse Y");
+        Quaternion angle = Quaternion.Euler(0, ftCameraAxisByX, 0);
+        transform.localRotation = angle;
     }
     void DemageReceivedPlayer()
     {
@@ -65,9 +74,4 @@ public class PlayerController : MonoBehaviour
             intPlayerLife -= 5;
         }
     }
-       
-    void ChangeScale() // cambiar escala
-    {
-        transform.localScale = newScale;
-    }    
 }
