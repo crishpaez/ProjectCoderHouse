@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 6683304515727093934}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -337,7 +337,6 @@ MonoBehaviour:
   strPlayerName: Mr. HCP
   ftPlayerSpeed: 3.04
   newScale: {x: 2, y: 2, z: 2}
-  direction: {x: 0, y: 0, z: 0.1}
   initPosition: {x: 4, y: 4, z: 4}
   swordPlayer: {fileID: 0}
 --- !u!1 &6683304517097579033

@@ -719,6 +719,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 2818423840006971860, guid: 30181797a4b3a654da410ff0720fb451, type: 3}
+  bulletSpawnPoint: {fileID: 6344719950981099438}
+  ftIntervalTimeSpawnBullet: 5
 --- !u!1 &6344719950432679328
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,7 +962,7 @@ GameObject:
   - component: {fileID: 6344719950981099433}
   - component: {fileID: 6344719950981099432}
   m_Layer: 0
-  m_Name: Cylinder (2)
+  m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -61,17 +61,32 @@ public class PlayerController : MonoBehaviour
         Quaternion angle = Quaternion.Euler(0, ftCameraAxisByX, 0);
         transform.localRotation = angle;
     }
-    void DemageReceivedPlayer()
+    private void OnCollisionEnter(Collision collision)
     {
-        if (intPlayerLife > 5 && intPlayerLife < 8)
+        Debug.Log(collision.gameObject.name);
+            
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.gameObject.name);
+        // Usar para el portal por el uso del Is tigger en el colisionador un posible toggle
+        if (other.gameObject.CompareTag("Portal"))
         {
-            Debug.Log("Demage +3");
-            intPlayerLife -= 3;
-        }
-        else if (intPlayerLife == 8 || intPlayerLife == 10)
-        {
-            Debug.Log("Demage +5");
-            intPlayerLife -= 5;
+            
+
         }
     }
+    //void DemageReceivedPlayer()
+    //{
+    //    if (intPlayerLife > 5 && intPlayerLife < 8)
+    //    {
+    //        Debug.Log("Demage +3");
+    //        intPlayerLife -= 3;
+    //    }
+    //    else if (intPlayerLife == 8 || intPlayerLife == 10)
+    //    {
+    //        Debug.Log("Demage +5");
+    //        intPlayerLife -= 5;
+    //    }
+    //}
 }

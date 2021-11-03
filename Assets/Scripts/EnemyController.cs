@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
     public float ftSpeedEnemy = 5.0f;
     [SerializeField] private Enemies enemy;
     private GameObject player;
+    private Rigidbody rbEnemy;
 
     enum Enemies { EnemyOne, EnemyTwo, None };
     bool isFoward = true;
@@ -15,9 +16,13 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
+        rbEnemy = GetComponent<Rigidbody>();
     }
     // Update is called once per frame
     void Update()
+    {
+    }
+    private void FixedUpdate()
     {
         EnemyTowards();
     }
@@ -29,8 +34,10 @@ public class EnemyController : MonoBehaviour
                 LookEnemyOne(.5f);
                 break;
             case Enemies.EnemyTwo:
-                MoveTowards();
-                LookAtPlayer();
+                Vector3 playerDirection = GetPlayerDirection();
+                rbEnemy.rotation = Quaternion.LookRotation(new Vector3(playerDirection.x, 0, playerDirection.z));
+                rbEnemy.AddForce(playerDirection.normalized * ftSpeedEnemy);
+                //LookAtPlayer();
                 break;
             case Enemies.None:
                 break;
@@ -39,27 +46,27 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    //private void MoveEnemy(Vector3 direction)
-    //{
-    //    transform.Translate(ftSpeedEnemy * Time.deltaTime * direction);
-    //}
+    private Vector3 GetPlayerDirection()
+    {
+        return player.transform.position - transform.position;
+    }
     private void LookEnemyOne(float ftSpeedToLook)
     {
         Quaternion newRotation = Quaternion.LookRotation(player.transform.position - transform.position);
         transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, ftSpeedToLook * Time.deltaTime);
     }
-    private void MoveTowards()
-    {
-        Vector3 direction = player.transform.position - transform.position;
-        if (direction.magnitude > 1.2)
-        {
-            transform.position += ftSpeedEnemy * direction.normalized * Time.deltaTime;
-        }        
-    }
-    private void LookAtPlayer()
-    {
-        Vector3 direction = player.transform.position - transform.position;
-        Quaternion newRotation = Quaternion.LookRotation(direction);
-        transform.rotation = newRotation;
-    }
+    //private void LookAtPlayer()
+    //{
+    //    Vector3 direction = player.transform.position - transform.position;
+    //    Quaternion newRotation = Quaternion.LookRotation(direction);
+    //    transform.rotation = newRotation;
+    //}
+    //private void MoveTowards()
+    //{
+    //    Vector3 direction = player.transform.position - transform.position;
+    //    if (direction.magnitude > 1.2)
+    //    {
+    //        transform.position += ftSpeedEnemy * direction.normalized * Time.deltaTime;
+    //    }
+    //}
 }
